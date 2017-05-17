@@ -1,0 +1,89 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package swingguitest;
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javafx.scene.layout.Border;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+/**
+ *
+ * @author pholz
+ */
+public class SwingGUITest {
+
+        //JButton button1;
+        JLabel label1;
+        JFrame frame1;
+        
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        SwingGUITest gui = new SwingGUITest();
+        gui.initializeGUI();
+    }
+
+    public void initializeGUI(){
+        
+        
+        frame1 = new JFrame();
+        JButton button1 = new JButton("Click the label");
+        button1.addActionListener(new LabelListener());
+        JButton button2 = new JButton("Change the color");
+        button2.addActionListener(new ButtonChangesTheColorListener());
+        DrawingPanel panel1 = new DrawingPanel();
+        label1  = new JLabel("The label");
+        panel1.setVisible(true);
+        
+        //frame1.getContentPane().add(BorderLayout.NORTH, button1);
+        //button1.setSize(800,200);
+        //frame1.setAlwaysOnTop(true);
+        frame1.setDefaultCloseOperation(frame1.EXIT_ON_CLOSE);
+        frame1.getContentPane().add(BorderLayout.SOUTH, button1);
+        frame1.getContentPane().add(BorderLayout.CENTER, panel1);
+        frame1.getContentPane().add(BorderLayout.EAST, button2);
+        frame1.getContentPane().add(BorderLayout.WEST, label1);
+        frame1.setSize(600, 600);
+        frame1.setVisible(true);
+        frame1.setLocation(900, 200);
+        
+       
+    }
+    
+    //inner classes
+    
+    class LabelListener implements ActionListener {
+        
+        
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+           label1.setText("Label Text changed!!");
+           //frame1.setSize(1024, 800);
+        }
+    }
+    
+    class ButtonChangesTheColorListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent ae){
+            //reprint the frame
+            frame1.repaint();
+            
+        }
+    }
+    /*@Override
+    public void actionPerformed(ActionEvent ae) {
+                // button1.setText("Some text");
+                
+    }*/
+    
+}
