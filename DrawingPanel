@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package swingguitest;
+
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ *
+ * @author pholz
+ */
+public class DrawingPanel extends JPanel {
+
+    Color color;
+
+    /*public DrawingPanel(Color color){
+        this.color = color;
+    }*/
+    public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+       
+        
+        int red = (int) (Math.random() * 256);
+        int green = (int) (Math.random() * 256);
+        int blue = (int) (Math.random() * 256);
+        Color randomColor = new Color(red, green, blue);
+        int width = getWidth();
+        int height = getHeight();
+        //g2.setColor(randomColor);
+        g2.setPaint(randomColor);
+        g2.fillOval(100,100,width-200,height-200);
+        
+        //g2.drawRect(300, 300, 100, 100);
+        //g2.setColor(Color.ORANGE);
+        //graph.setColor(Color.MAGENTA);
+    }
+
+    /*
+    public void paintComponent(Graphics g) {
+    g.setColor(Color.white);
+    g.setColor(Color.black);
+    g.fillRect(0,0, this.getWidth(), this.getHeight());
+    g.setColor(Color.orange);
+    //g.fillRect(20,50,100,100);
+  }
+    
+    */
+    /*public void paintComponent(Graphics graph) {
+        
+        Graphics2D gr = (Graphics2D) graph;
+    //graph.setColor(Color.orange);
+        //graph.fillRect(0,0,this.getWidth(),this.getHeight());
+        int red = (int) (Math.random() * 256);
+        int green = (int) (Math.random() * 256);
+        int blue = (int) (Math.random() * 256);
+        Color randomColor = new Color(red, green, blue);
+        gr.setPaint(randomColor);
+        gr.fillOval(70,70,100,100);
+        
+        //graph.setColor(Color.red);
+        //graph.fillOval(70,70,100,100);
+    }*/
+}
