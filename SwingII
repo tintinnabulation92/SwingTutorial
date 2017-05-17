@@ -1,0 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package swingii;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author pholz
+ */
+public class SwingII {
+    int x = 70;
+    int y = 70;
+    
+    public static void main(String[] args) {
+        SwingII sw = new SwingII();
+        sw.drawGUI();
+        
+    }
+    
+    public void drawGUI(){
+        JFrame frame = new JFrame("Animation Test");
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        DrawnPanel panel = new DrawnPanel();
+        frame.getContentPane().add(panel);
+        
+        while(true){
+            for(int i = 0; i<300; i++){
+                x++;
+                y++;
+                panel.repaint();
+
+                try 
+                {
+                    Thread.sleep(5);
+                } 
+                catch (Exception e) 
+                {
+                    e.printStackTrace();
+                }
+
+            }
+
+            for(int i = 0; i<300; i++){
+                x--;
+                y--;
+                panel.repaint();
+
+                try 
+                {
+                    Thread.sleep(2);
+                } 
+                catch (Exception e) 
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }//while
+    }
+    
+    class DrawnPanel extends JPanel{
+        @Override
+        public void paintComponent(Graphics g){
+            g.setColor(Color.white);
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());
+            g.setColor(Color.GREEN);
+            g.fillOval(x, y, 40, 40);
+        }
+    }
+    
+    
+}
